@@ -71,12 +71,12 @@ public class TenantController {
 	}
 	
 	@PutMapping(Constants.UPDATE_URL)
-	public String updateTenant(@PathVariable("id")long id, @RequestBody Tenant tenantUpdate) {
+	public String updateTenant(@PathVariable("id")String id, @RequestBody Tenant tenantUpdate) {
 		return this.tenantService.updateTenant(id, tenantUpdate);
 	}
 	
 	@PutMapping(Constants.UPDATE_GROUP_URL)
-	public String updateTenant(@PathVariable("groupName") String setGroupName, @RequestBody Tenant tenantUpdate) {
+	public String updateTenantGroup(@PathVariable("groupName") String setGroupName, @RequestBody Tenant tenantUpdate) {
 		List<Tenant> tenants = this.tenantGroupSearch(setGroupName);
 		return this.tenantService.updateTenantGroup(tenants, tenantUpdate);
 	}

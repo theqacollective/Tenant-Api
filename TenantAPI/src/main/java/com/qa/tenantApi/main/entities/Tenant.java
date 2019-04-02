@@ -2,18 +2,14 @@ package com.qa.tenantApi.main.entities;
 
 import java.util.Optional;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
 import com.qa.tenantApi.main.Constants;
 
-@Entity
 public class Tenant {
 
 	@Id
-	@GeneratedValue
-	private long id;
+	private String id;
 
 	private String firstName;
 	private String lastName;
@@ -44,11 +40,11 @@ public class Tenant {
 		this.notes = notes;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 	
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id=id;
 	}
 

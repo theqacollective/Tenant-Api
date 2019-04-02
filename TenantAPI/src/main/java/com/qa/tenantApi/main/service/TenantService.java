@@ -47,10 +47,11 @@ public class TenantService {
 		return Constants.getAllDeletionMessage();
 	}
 	
-	public String updateTenant(Long id, Tenant updateTenant) {
+	public String updateTenant(String id, Tenant updateTenant) {
 		Tenant tenantToUpdate = this.tenantRepo.findById(id).orElse(new Tenant());
 		tenantToUpdate.update(updateTenant);
-		this.tenantRepo.saveAndFlush(tenantToUpdate);
+		this.tenantRepo.save(tenantToUpdate);
+		this.tenantRepo.delete(tenantToUpdate);
 		return Constants.getUpdateMesssage();
 	}
 	

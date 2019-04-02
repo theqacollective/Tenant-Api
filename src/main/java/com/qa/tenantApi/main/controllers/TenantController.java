@@ -42,39 +42,40 @@ public class TenantController {
 		Tenant tenant = TenantBuilder.tenantBuild();
 		return this.tenantService.tenantSearch(tenant);
 	}
-	
+
 	@GetMapping(Constants.GROUP_SEARCH_URL)
-	public List<Tenant> tenantGroupSearch(@PathVariable("groupName")String groupName) {
+	public List<Tenant> tenantGroupSearch(@PathVariable("groupName") String groupName) {
 		TenantBuilder.getTenantBuilder().groupName(groupName);
 		Tenant tenant = TenantBuilder.tenantBuild();
 		return this.tenantService.tenantSearch(tenant);
 	}
-	
+
 	@DeleteMapping(Constants.DELETE_ALL_URL)
 	public String deleteAllTenants() {
 		return this.tenantService.deleteAllTenants();
 	}
-	
+
 	@DeleteMapping(Constants.DELETE_GROUP_URL)
 	public String deleteTenantGroup(@PathVariable("groupName") String groupName) {
 		List<Tenant> tenants = this.tenantGroupSearch(groupName);
 		return this.tenantService.deleteTenantGroup(tenants);
 	}
-	
+
 	@DeleteMapping(Constants.DELETE_URL)
 	public String deleteTenant(String firstName, String lastName, String groupName) {
 		List<Tenant> tenants = this.tenantSearch(firstName, lastName, groupName);
-		for(int i = 0; i < tenants.size();i++) {
+		for (int i = 0; i < tenants.size(); i++) {
 			this.tenantService.deleteTenant(tenants.get(i));
 		}
 		return Constants.getTenantsDeletionMessage();
 	}
-	
+
 	@PutMapping(Constants.UPDATE_URL)
-	public String updateTenant(@PathVariable("id")String id, @RequestBody Tenant tenantUpdate) {
-		return this.tenantService.updateTenant(id, tenantUpdate);
+	public String updateTenant(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName,
+			@RequestBody Tenant tenantUpdate) {
+		return this.tenantService.updateTenant(firstName, lastName, tenantUpdate);
 	}
-	
+
 	@PutMapping(Constants.UPDATE_GROUP_URL)
 	public String updateTenantGroup(@PathVariable("groupName") String setGroupName, @RequestBody Tenant tenantUpdate) {
 		List<Tenant> tenants = this.tenantGroupSearch(setGroupName);

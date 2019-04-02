@@ -47,18 +47,27 @@ public class TenantService {
 		return Constants.getAllDeletionMessage();
 	}
 	
-	public String updateTenant(String id, Tenant updateTenant) {
-		Tenant tenantToUpdate = this.tenantRepo.findById(id).orElse(new Tenant());
-		tenantToUpdate.update(updateTenant);
+	public String updateTenant(String firstName, String lastName, Tenant updateTenant) {
+		Tenant tenantToUpdate = this.tenantSearch(tenantRepo.getLandlordsByFirstNameAndLastName(firstName, lastName)).get(0);
+		tenantToUpdate.setContactNumber(Optional.ofNullable(updateTenant.getContactNumber()).orElse(Optional.ofNullable(tenantToUpdate.getContactNumber()).orElse(Constants.getNaString())));
+		tenantToUpdate.setContactEmail(Optional.ofNullable(updateTenant.getContactEmail()).orElse(Optional.ofNullable(tenantToUpdate.getContactEmail()).orElse(Constants.getNaString())));
+		tenantToUpdate.setRoomReference(Optional.ofNullable(updateTenant.getRoomReference()).orElse(Optional.ofNullable(tenantToUpdate.getRoomReference()).orElse(Constants.getNaString())));
+		tenantToUpdate.setGroupName(Optional.ofNullable(updateTenant.getGroupName()).orElse(Optional.ofNullable(tenantToUpdate.getGroupName()).orElse(Constants.getNaString())));
+		tenantToUpdate.setStartDate(Optional.ofNullable(updateTenant.getStartDate()).orElse(Optional.ofNullable(tenantToUpdate.getStartDate()).orElse(Constants.getNaString())));
+		tenantToUpdate.setEndDate(Optional.ofNullable(updateTenant.getEndDate()).orElse(Optional.ofNullable(tenantToUpdate.getEndDate()).orElse(Constants.getNaString())));
+		tenantToUpdate.setNotes(Optional.ofNullable(updateTenant.getNotes()).orElse(Optional.ofNullable(tenantToUpdate.getNotes()).orElse(Constants.getNaString())));
+		
+		this.tenantRepo.delete(tenantSearch(tenantRepo.getLandlordsByFirstNameAndLastName(firstName, lastName)).get(0));
 		this.tenantRepo.save(tenantToUpdate);
-		this.tenantRepo.delete(tenantToUpdate);
+		
+		
 		return Constants.getUpdateMesssage();
 	}
 	
 	public String updateTenantGroup(List<Tenant> tenants, Tenant updateTenant) {
 		for(int i = 0; i<tenants.size();i++) {
 			Tenant tenantToUpdate = tenants.get(i);
-			this.updateTenant(tenantToUpdate.getId(),updateTenant);
+			this.updateTenant(tenantToUpdate.getFirstName(), tenantToUpdate.getLastName(), updateTenant);
 		}
 		return Constants.getGroupUpdateMessage();
 	}

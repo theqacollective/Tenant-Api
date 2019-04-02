@@ -36,7 +36,7 @@ public class TenantServiceTest {
 	private List<Tenant> tenantList;
 	private Tenant tenant;
 	private List<Tenant> returnList;
-	private Long index;
+	private String index;
 
 	@Before
 	public void setup() {
@@ -109,15 +109,15 @@ public class TenantServiceTest {
 	@Test
 	public void updateTenantTest() throws CloneNotSupportedException {
 		this.tenant = Constants.getConstructedTenant();
-		Mockito.when(this.tenantRepo.findById((Long)notNull())).thenReturn(Optional.ofNullable(this.tenantList.get(0)));
-		Mockito.when(this.tenantRepo.saveAndFlush((Tenant)notNull())).thenAnswer((Answer<?>) invocation -> {
+		Mockito.when(this.tenantRepo.findById((String)notNull())).thenReturn(Optional.ofNullable(this.tenantList.get(0)));
+		Mockito.when(this.tenantRepo.save((Tenant)notNull())).thenAnswer((Answer<?>) invocation -> {
 			this.tenantList.clear();
 			this.tenantList.add(this.tenant);
 			this.tenantList.add(Constants.getConstructedTenant());  
 			return tenant;
 		});
 
-		this.index = Long.valueOf(String.valueOf(0));
+		this.index = String.valueOf(String.valueOf(0));
 		this.tenantService.updateTenant(this.index, this.tenant);
 		assertThat(this.tenantList.get(0).matches(Constants.getConstructedTenant()));
 	}

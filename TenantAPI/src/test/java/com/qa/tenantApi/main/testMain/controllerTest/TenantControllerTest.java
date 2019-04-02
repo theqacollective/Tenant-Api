@@ -62,7 +62,7 @@ public class TenantControllerTest {
 	private String content;
 	private TypeReference<List<Tenant>> mapType;
 	private List<Tenant> list;
-	private Long id;
+	private String id;
 
 	@Before
 	public void setUp() throws JsonProcessingException {
@@ -144,7 +144,7 @@ public class TenantControllerTest {
 	@Test
 	public void testUpdateTenant() throws Exception {
 		this.id = controllerTestTenant.getId();
-		Mockito.when(this.service.updateTenant((Long)notNull(), (Tenant)notNull())).thenAnswer((Answer<?>) invocation -> {
+		Mockito.when(this.service.updateTenant((String)notNull(), (Tenant)notNull())).thenAnswer((Answer<?>) invocation -> {
 			this.controllerTestTenant = Constants.getDefaultBuilderTenant();
 			this.controllerTestTenant.setId(id);
 			return Constants.getUpdateMesssage();

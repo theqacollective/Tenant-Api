@@ -144,7 +144,7 @@ public class TenantControllerTest {
 	@Test
 	public void testUpdateTenant() throws Exception {
 		this.id = controllerTestTenant.getId();
-		Mockito.when(this.service.updateTenant((String)notNull(), (Tenant)notNull())).thenAnswer((Answer<?>) invocation -> {
+		Mockito.when(this.service.updateTenant((String)notNull(), (String)notNull(), (Tenant)notNull())).thenAnswer((Answer<?>) invocation -> {
 			this.controllerTestTenant = Constants.getDefaultBuilderTenant();
 			this.controllerTestTenant.setId(id);
 			return Constants.getUpdateMesssage();

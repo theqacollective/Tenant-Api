@@ -118,7 +118,7 @@ public class TenantServiceTest {
 		});
 
 		this.index = String.valueOf(String.valueOf(0));
-		this.tenantService.updateTenant(this.index, this.tenant);
+		this.tenantService.updateTenant(this.index, this.index, this.tenant);
 		assertThat(this.tenantList.get(0).matches(Constants.getConstructedTenant()));
 	}
 }

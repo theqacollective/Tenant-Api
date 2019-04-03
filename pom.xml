@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.qa</groupId>
-	<artifactId>artifact</artifactId>
+	<artifactId>TenantAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>TenantAPI-1</name>
 	<description>Demo project for Spring Boot</description>

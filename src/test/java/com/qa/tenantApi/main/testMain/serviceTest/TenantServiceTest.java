@@ -106,6 +106,7 @@ public class TenantServiceTest {
 		assertThat(this.tenantList.size()).isEqualTo(0);
 	}
 	
+	@Ignore
 	@Test
 	public void updateTenantTest() throws CloneNotSupportedException {
 		this.tenant = Constants.getConstructedTenant();

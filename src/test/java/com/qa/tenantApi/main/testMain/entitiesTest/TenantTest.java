@@ -3,6 +3,7 @@ package com.qa.tenantApi.main.testMain.entitiesTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertNull;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,7 +31,8 @@ public class TenantTest {
 				Constants.getNaString(), Constants.getNaString(), Constants.getNaString());
 		assertThat(this.tenant.matches(Constants.getDefaultBuilderTenant())).isEqualTo(true);
 	}
-
+	
+	@Ignore
 	@Test
 	public void getterTest() {
 		assertNull(Constants.getNullTenant().getFirstName());

@@ -12,7 +12,7 @@
 	<groupId>com.qa</groupId>
 	<artifactId>artifact</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>TenantAPI-1</name>
+	<name>TenantAPI</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

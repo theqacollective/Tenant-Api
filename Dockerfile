@@ -5,6 +5,6 @@ COPY . .
 RUN mvn clean package
 
 FROM openjdk:8
-COPY --from=build /build/target/TenantAPI-1-0.0.1-SNAPSHOT.jar  tenant.jar
+COPY --from=build /build/target/TenantAPI-0.0.1-SNAPSHOT.jar  tenant.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","tenant.jar"]

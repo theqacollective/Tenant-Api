@@ -28,13 +28,13 @@ public class Constants {
 	private static final String TEST_END_DATE = "TestEndDate";
 	private static final String TEST_NOTES = "TestNotes";
 	private static final String NA_STRING = "N/A";
-	private static final String CREATION_MESSAGE = "New tenant created";
-	private static final String DELETION_MESSAGE = "Tenant deleted";
-	private static final String ALL_DELETION_MESSAGE = "All tenants deleted";
-	private static final String UPDATE_MESSSAGE = "Tenant updated";
-	private static final String GROUP_UPDATE_MESSAGE = "Tenant group updated";
-	private static final String TENANTS_DELETION_MESSAGE = "Tenant(s) deleted";
-	private static final String GROUP_DELETION_MESSAGE = "Tenant group deleted";
+	private static final String CREATION_MESSAGE = "New Tenant Created";
+	private static final String DELETION_MESSAGE = "Tenant Deleted";
+	private static final String ALL_DELETION_MESSAGE = "All Tenants Deleted";
+	private static final String UPDATE_MESSSAGE = "Tenant Updated";
+	private static final String GROUP_UPDATE_MESSAGE = "Tenant Group Updated";
+	private static final String TENANTS_DELETION_MESSAGE = "Tenant(s) Deleted";
+	private static final String GROUP_DELETION_MESSAGE = "Tenant Group Deleted";
 	private static final String HELLO_WORLD = "Hello World";
 	private static final String GROUP_NAME = "groupName";
 	private static final String FIRST_NAME = "firstName";
@@ -42,6 +42,9 @@ public class Constants {
 	private static final String ID = "id";
 	private static final String CHARSET = "utf8";
 	
+	public static final String SEARCH_BY_FIRST_NAME = "/findTenantByFirstName/{firstName}";
+	public static final String SEARCH_BY_LAST_NAME = "/findTenantByLastName/{LastName}";
+	public static final String SEARCH_BY_GROUP_NAME = "/findTenantByGroupName/{groupName}";
 	public static final String CREATE_URL = "/createTenant";
 	public static final String GET_ALL_URL = "/getAllTenants";
 	public static final String SEARCH_URL = "/tenantSearch";

@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.tenantApi.main.Constants;
@@ -36,6 +36,19 @@ public class TenantController {
 		return this.tenantService.getAllTenants();
 	}
 
+	@GetMapping(Constants.SEARCH_BY_FIRST_NAME)
+	public List<Tenant> getTenantByFirstName(@PathVariable("firstName") String firstName) {
+		return this.tenantService.getTenantByFirstName(firstName);
+	}
+	@GetMapping(Constants.SEARCH_BY_LAST_NAME)
+	public List<Tenant> getTenantByLastName(@PathVariable("lastName") String lastName){
+		return this.tenantService.getTenantByLastName(lastName);
+	}
+	@GetMapping(Constants.SEARCH_BY_GROUP_NAME)
+	public List<Tenant> getTenantByGroupName(@PathVariable("groupName") String groupName)
+	{
+		return this.tenantService.getTenantByGroupName(groupName);
+	}
 	@GetMapping(Constants.SEARCH_URL)
 	public List<Tenant> tenantSearch(String firstName, String lastName, String groupName) {
 		TenantBuilder.getTenantBuilder().firstName(firstName).lastName(lastName).groupName(groupName);

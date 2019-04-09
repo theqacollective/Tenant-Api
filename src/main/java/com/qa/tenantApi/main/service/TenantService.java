@@ -40,11 +40,18 @@ public class TenantService {
 	}
 
 	public String createTenant(Tenant tenant) {
+		if(this.tenantRepo.getTenantByFirstNameAndLastName(tenant.getFirstName(), tenant.getLastName()) != null) {
+			return "Tenant Already Exists";
+		}
 		this.tenantRepo.save(tenant);
 		return Constants.getCreationMessage();
 	}
 
 	public String deleteTenant(Tenant tenant) {
+		if(this.tenantRepo.getTenantByFirstNameAndLastName(tenant.getFirstName(), tenant.getLastName()) == null)
+		{
+			return "Tenant Does Not Exist";
+		}
 		this.tenantRepo.delete(tenant);
 		return Constants.getDeletionMessage();
 	}
